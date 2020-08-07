@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ef8d8212b1f84fa6ba1b1e96644281b8" Name="Diagram1">
+        <EntityTypeShape EntityType="ArbitrationTrackFlowModel.arbitrator_assignment" Width="2.5" PointX="8.125" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArbitrationTrackFlowModel.clinical_summaries" Width="2.75" PointX="4.375" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArbitrationTrackFlowModel.eligible_green" Width="2.125" PointX="0.625" PointY="0.5" IsExpanded="true" FillColor="0, 192, 0" />
+        <EntityTypeShape EntityType="ArbitrationTrackFlowModel.eligible_yellow_blue" Width="1.75" PointX="4.375" PointY="0.875" IsExpanded="true" FillColor="Yellow" />
+        <AssociationConnector Association="ArbitrationTrackFlowModel.FK_eligible_yellow_blue_eligible_green" ManuallyRouted="false" />
+        <AssociationConnector Association="ArbitrationTrackFlowModel.FK_arbitrator_assignment_eligible_green" />
+        <AssociationConnector Association="ArbitrationTrackFlowModel.FK_clinical_summaries_eligible_green" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

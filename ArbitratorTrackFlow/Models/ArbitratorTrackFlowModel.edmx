@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ArbitrationTrackFlowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="arbitrator_assignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="req_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mediserv_filer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="arbitrator" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="judge" Type="nvarchar" MaxLength="25" />
+          <Property Name="no_of_claims" Type="int" Nullable="false" />
+          <Property Name="date_assigned" Type="date" Nullable="false" />
+          <Property Name="total_fee" Type="money" Nullable="false" />
+          <Property Name="request_for_payment" Type="nvarchar" MaxLength="150" />
+          <Property Name="our_fee" Type="money" Nullable="false" />
+          <Property Name="health_plan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="hp_original_payment" Type="money" Nullable="false" />
+          <Property Name="hp_final" Type="money" Nullable="false" />
+          <Property Name="th_final" Type="money" Nullable="false" />
+          <Property Name="packet_due_date" Type="date" Nullable="false" />
+          <Property Name="packet_sent_to_arbitrator" Type="date" Nullable="false" />
+          <Property Name="final_offer" Type="money" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+          <Property Name="copy_of_packet_to_health_plan" Type="bit" Nullable="false" />
+          <Property Name="did_we_receive_hp_packet" Type="bit" />
+          <Property Name="outcome" Type="nvarchar" MaxLength="50" />
+          <Property Name="reasonable_fee" Type="money" />
+          <Property Name="date" Type="date" />
+          <Property Name="arbitrators_percent_of_medicare" Type="nvarchar" MaxLength="5" />
+          <Property Name="cpt" Type="nvarchar" MaxLength="250" />
+          <Property Name="eligible_green_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clinical_summaries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="health_plan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="grp" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="inv_no" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="mrn" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="dos" Type="date" Nullable="false" />
+          <Property Name="procedure" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="patient_name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="physician_name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="request_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="due_date" Type="date" Nullable="false" />
+          <Property Name="clinical_summary_assigned_completed" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="comment" Type="nvarchar" MaxLength="1500" Nullable="false" />
+          <Property Name="eligible_green_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="eligible_green">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ds_an" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="plan_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="provider_npi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="provider" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="payer_claim_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pt_n" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="payer_group_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="payer_insured_no" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dos" Type="date" Nullable="false" />
+          <Property Name="payer_ck_date" Type="date" Nullable="false" />
+          <Property Name="chg" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ins_pay" Type="money" Nullable="false" />
+          <Property Name="pt_pay" Type="money" Nullable="false" />
+          <Property Name="ds" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="an" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="st_name" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="plan_no" Type="int" Nullable="false" />
+          <Property Name="loc_n" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="payer_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="hosp_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dob" Type="date" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="ssn" Type="nvarchar" MaxLength="15" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="address_1" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="address_2" Type="nvarchar" MaxLength="150" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="zip" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="employer" Type="nvarchar" MaxLength="50" />
+          <Property Name="dp" Type="date" Nullable="false" />
+          <Property Name="mos" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="cpt" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="modifier" Type="int" />
+          <Property Name="at" Type="int" />
+          <Property Name="pay" Type="money" Nullable="false" />
+          <Property Name="adj" Type="money" Nullable="false" />
+          <Property Name="ins_ar" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pt_ar" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mcr" Type="money" Nullable="false" />
+          <Property Name="allow" Type="money" Nullable="false" />
+          <Property Name="ded" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mcr_percent" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="adju_yn" Type="bit" Nullable="false" />
+          <Property Name="ca" Type="money" Nullable="false" />
+          <Property Name="class_k" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ip_dp" Type="date" />
+          <Property Name="pp_dp" Type="date" />
+          <Property Name="facility" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="entity" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="tax_id" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="fac_county" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="fac_zip" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="fac_state" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="acct_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="returned_date" Type="date" />
+          <Property Name="custom_field_1" Type="nvarchar" MaxLength="150" />
+          <Property Name="full_insur_yn_na" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="filing_un" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="current_date" Type="date" Nullable="false" />
+          <Property Name="filing_deadline_passed_yn" Type="bit" Nullable="false" />
+          <Property Name="filing_deadline_begun_yn" Type="bit" Nullable="false" />
+          <Property Name="tdi_yn" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="eligible_yellow_blue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ineligible" Type="bit" />
+          <Property Name="reason" Type="nvarchar" MaxLength="150" />
+          <Property Name="req_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_filed" Type="date" />
+          <Property Name="filer" Type="nvarchar" MaxLength="50" />
+          <Property Name="strikethrough" Type="bit" Nullable="false" />
+          <Property Name="eligible_green_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_arbitrator_assignment_eligible_green">
+          <End Role="eligible_green" Type="Self.eligible_green" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="arbitrator_assignment" Type="Self.arbitrator_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eligible_green">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arbitrator_assignment">
+              <PropertyRef Name="eligible_green_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clinical_summaries_eligible_green">
+          <End Role="eligible_green" Type="Self.eligible_green" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clinical_summaries" Type="Self.clinical_summaries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eligible_green">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="clinical_summaries">
+              <PropertyRef Name="eligible_green_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eligible_yellow_blue_eligible_green">
+          <End Role="eligible_green" Type="Self.eligible_green" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="eligible_yellow_blue" Type="Self.eligible_yellow_blue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eligible_green">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eligible_yellow_blue">
+              <PropertyRef Name="eligible_green_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ArbitrationTrackFlowModelStoreContainer">
+          <EntitySet Name="arbitrator_assignment" EntityType="Self.arbitrator_assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clinical_summaries" EntityType="Self.clinical_summaries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eligible_green" EntityType="Self.eligible_green" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eligible_yellow_blue" EntityType="Self.eligible_yellow_blue" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_arbitrator_assignment_eligible_green" Association="Self.FK_arbitrator_assignment_eligible_green">
+            <End Role="eligible_green" EntitySet="eligible_green" />
+            <End Role="arbitrator_assignment" EntitySet="arbitrator_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clinical_summaries_eligible_green" Association="Self.FK_clinical_summaries_eligible_green">
+            <End Role="eligible_green" EntitySet="eligible_green" />
+            <End Role="clinical_summaries" EntitySet="clinical_summaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eligible_yellow_blue_eligible_green" Association="Self.FK_eligible_yellow_blue_eligible_green">
+            <End Role="eligible_green" EntitySet="eligible_green" />
+            <End Role="eligible_yellow_blue" EntitySet="eligible_yellow_blue" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArbitrationTrackFlowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="arbitrator_assignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="req_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mediserv_filer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="arbitrator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="judge" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="no_of_claims" Type="Int32" Nullable="false" />
+          <Property Name="date_assigned" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="total_fee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="request_for_payment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="our_fee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="health_plan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hp_original_payment" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="hp_final" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="th_final" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="packet_due_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="packet_sent_to_arbitrator" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="final_offer" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="copy_of_packet_to_health_plan" Type="Boolean" Nullable="false" />
+          <Property Name="did_we_receive_hp_packet" Type="Boolean" />
+          <Property Name="outcome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reasonable_fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="arbitrators_percent_of_medicare" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="cpt" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="eligible_green_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="eligible_green" Relationship="ArbitrationTrackFlowModel.FK_arbitrator_assignment_eligible_green" FromRole="arbitrator_assignment" ToRole="eligible_green" />
+        </EntityType>
+        <EntityType Name="clinical_summaries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="health_plan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="grp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="inv_no" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mrn" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dos" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="procedure" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patient_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="physician_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="request_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="due_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="clinical_summary_assigned_completed" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="eligible_green_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="eligible_green" Relationship="ArbitrationTrackFlowModel.FK_clinical_summaries_eligible_green" FromRole="clinical_summaries" ToRole="eligible_green" />
+        </EntityType>
+        <EntityType Name="eligible_green">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ds_an" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="plan_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="provider_npi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="provider" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="payer_claim_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pt_n" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="payer_group_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="payer_insured_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dos" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="payer_ck_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="chg" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ins_pay" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="pt_pay" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ds" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="an" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="st_name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="plan_no" Type="Int32" Nullable="false" />
+          <Property Name="loc_n" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="payer_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hosp_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ssn" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address_1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address_2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="employer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dp" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="mos" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cpt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="modifier" Type="Int32" />
+          <Property Name="at" Type="Int32" />
+          <Property Name="pay" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="adj" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ins_ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pt_ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mcr" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="allow" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ded" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mcr_percent" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="adju_yn" Type="Boolean" Nullable="false" />
+          <Property Name="ca" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="class_k" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ip_dp" Type="DateTime" Precision="0" />
+          <Property Name="pp_dp" Type="DateTime" Precision="0" />
+          <Property Name="facility" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="entity" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tax_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fac_county" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fac_zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fac_state" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acct_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="returned_date" Type="DateTime" Precision="0" />
+          <Property Name="custom_field_1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="full_insur_yn_na" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="filing_un" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="current_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="filing_deadline_passed_yn" Type="Boolean" Nullable="false" />
+          <Property Name="filing_deadline_begun_yn" Type="Boolean" Nullable="false" />
+          <Property Name="tdi_yn" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="eligible_yellow_blue" Relationship="Self.FK_eligible_yellow_blue_eligible_green" FromRole="eligible_green" ToRole="eligible_yellow_blue" />
+          <NavigationProperty Name="arbitrator_assignment" Relationship="ArbitrationTrackFlowModel.FK_arbitrator_assignment_eligible_green" FromRole="eligible_green" ToRole="arbitrator_assignment" />
+          <NavigationProperty Name="clinical_summaries" Relationship="ArbitrationTrackFlowModel.FK_clinical_summaries_eligible_green" FromRole="eligible_green" ToRole="clinical_summaries" />
+        </EntityType>
+        <EntityType Name="eligible_yellow_blue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ineligible" Type="Boolean" />
+          <Property Name="reason" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="req_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_filed" Type="DateTime" Precision="0" />
+          <Property Name="filer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="strikethrough" Type="Boolean" Nullable="false" />
+          <Property Name="eligible_green_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="eligible_green" Relationship="Self.FK_eligible_yellow_blue_eligible_green" FromRole="eligible_yellow_blue" ToRole="eligible_green" />
+        </EntityType>
+        <Association Name="FK_eligible_yellow_blue_eligible_green">
+          <End Role="eligible_green" Type="Self.eligible_green" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="eligible_yellow_blue" Type="Self.eligible_yellow_blue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eligible_green">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eligible_yellow_blue">
+              <PropertyRef Name="eligible_green_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ArbitrationTrackFlowEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="arbitrator_assignment" EntityType="Self.arbitrator_assignment" />
+          <EntitySet Name="clinical_summaries" EntityType="Self.clinical_summaries" />
+          <EntitySet Name="eligible_green" EntityType="Self.eligible_green" />
+          <EntitySet Name="eligible_yellow_blue" EntityType="Self.eligible_yellow_blue" />
+          <AssociationSet Name="FK_eligible_yellow_blue_eligible_green" Association="Self.FK_eligible_yellow_blue_eligible_green">
+            <End Role="eligible_green" EntitySet="eligible_green" />
+            <End Role="eligible_yellow_blue" EntitySet="eligible_yellow_blue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_arbitrator_assignment_eligible_green" Association="ArbitrationTrackFlowModel.FK_arbitrator_assignment_eligible_green">
+            <End Role="eligible_green" EntitySet="eligible_green" />
+            <End Role="arbitrator_assignment" EntitySet="arbitrator_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clinical_summaries_eligible_green" Association="ArbitrationTrackFlowModel.FK_clinical_summaries_eligible_green">
+            <End Role="eligible_green" EntitySet="eligible_green" />
+            <End Role="clinical_summaries" EntitySet="clinical_summaries" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_arbitrator_assignment_eligible_green">
+          <End Type="ArbitrationTrackFlowModel.eligible_green" Role="eligible_green" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArbitrationTrackFlowModel.arbitrator_assignment" Role="arbitrator_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eligible_green">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="arbitrator_assignment">
+              <PropertyRef Name="eligible_green_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clinical_summaries_eligible_green">
+          <End Type="ArbitrationTrackFlowModel.eligible_green" Role="eligible_green" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArbitrationTrackFlowModel.clinical_summaries" Role="clinical_summaries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eligible_green">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="clinical_summaries">
+              <PropertyRef Name="eligible_green_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ArbitrationTrackFlowModelStoreContainer" CdmEntityContainer="ArbitrationTrackFlowEntities">
+          <EntitySetMapping Name="arbitrator_assignment">
+            <EntityTypeMapping TypeName="ArbitrationTrackFlowModel.arbitrator_assignment">
+              <MappingFragment StoreEntitySet="arbitrator_assignment">
+                <ScalarProperty Name="eligible_green_id" ColumnName="eligible_green_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="req_id" ColumnName="req_id" />
+                <ScalarProperty Name="mediserv_filer" ColumnName="mediserv_filer" />
+                <ScalarProperty Name="arbitrator" ColumnName="arbitrator" />
+                <ScalarProperty Name="judge" ColumnName="judge" />
+                <ScalarProperty Name="no_of_claims" ColumnName="no_of_claims" />
+                <ScalarProperty Name="date_assigned" ColumnName="date_assigned" />
+                <ScalarProperty Name="total_fee" ColumnName="total_fee" />
+                <ScalarProperty Name="request_for_payment" ColumnName="request_for_payment" />
+                <ScalarProperty Name="our_fee" ColumnName="our_fee" />
+                <ScalarProperty Name="health_plan" ColumnName="health_plan" />
+                <ScalarProperty Name="hp_original_payment" ColumnName="hp_original_payment" />
+                <ScalarProperty Name="hp_final" ColumnName="hp_final" />
+                <ScalarProperty Name="th_final" ColumnName="th_final" />
+                <ScalarProperty Name="packet_due_date" ColumnName="packet_due_date" />
+                <ScalarProperty Name="packet_sent_to_arbitrator" ColumnName="packet_sent_to_arbitrator" />
+                <ScalarProperty Name="final_offer" ColumnName="final_offer" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="copy_of_packet_to_health_plan" ColumnName="copy_of_packet_to_health_plan" />
+                <ScalarProperty Name="did_we_receive_hp_packet" ColumnName="did_we_receive_hp_packet" />
+                <ScalarProperty Name="outcome" ColumnName="outcome" />
+                <ScalarProperty Name="reasonable_fee" ColumnName="reasonable_fee" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="arbitrators_percent_of_medicare" ColumnName="arbitrators_percent_of_medicare" />
+                <ScalarProperty Name="cpt" ColumnName="cpt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clinical_summaries">
+            <EntityTypeMapping TypeName="ArbitrationTrackFlowModel.clinical_summaries">
+              <MappingFragment StoreEntitySet="clinical_summaries">
+                <ScalarProperty Name="eligible_green_id" ColumnName="eligible_green_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="health_plan" ColumnName="health_plan" />
+                <ScalarProperty Name="grp" ColumnName="grp" />
+                <ScalarProperty Name="inv_no" ColumnName="inv_no" />
+                <ScalarProperty Name="mrn" ColumnName="mrn" />
+                <ScalarProperty Name="dos" ColumnName="dos" />
+                <ScalarProperty Name="procedure" ColumnName="procedure" />
+                <ScalarProperty Name="patient_name" ColumnName="patient_name" />
+                <ScalarProperty Name="physician_name" ColumnName="physician_name" />
+                <ScalarProperty Name="request_id" ColumnName="request_id" />
+                <ScalarProperty Name="due_date" ColumnName="due_date" />
+                <ScalarProperty Name="clinical_summary_assigned_completed" ColumnName="clinical_summary_assigned_completed" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eligible_green">
+            <EntityTypeMapping TypeName="ArbitrationTrackFlowModel.eligible_green">
+              <MappingFragment StoreEntitySet="eligible_green">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ds_an" ColumnName="ds_an" />
+                <ScalarProperty Name="plan_name" ColumnName="plan_name" />
+                <ScalarProperty Name="provider_npi" ColumnName="provider_npi" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="payer_claim_number" ColumnName="payer_claim_number" />
+                <ScalarProperty Name="pt_n" ColumnName="pt_n" />
+                <ScalarProperty Name="payer_group_no" ColumnName="payer_group_no" />
+                <ScalarProperty Name="payer_insured_no" ColumnName="payer_insured_no" />
+                <ScalarProperty Name="dos" ColumnName="dos" />
+                <ScalarProperty Name="payer_ck_date" ColumnName="payer_ck_date" />
+                <ScalarProperty Name="chg" ColumnName="chg" />
+                <ScalarProperty Name="ins_pay" ColumnName="ins_pay" />
+                <ScalarProperty Name="pt_pay" ColumnName="pt_pay" />
+                <ScalarProperty Name="ds" ColumnName="ds" />
+                <ScalarProperty Name="an" ColumnName="an" />
+                <ScalarProperty Name="st_name" ColumnName="st_name" />
+                <ScalarProperty Name="plan_no" ColumnName="plan_no" />
+                <ScalarProperty Name="loc_n" ColumnName="loc_n" />
+                <ScalarProperty Name="payer_name" ColumnName="payer_name" />
+                <ScalarProperty Name="hosp_id" ColumnName="hosp_id" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="ssn" ColumnName="ssn" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address_1" ColumnName="address_1" />
+                <ScalarProperty Name="address_2" ColumnName="address_2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="employer" ColumnName="employer" />
+                <ScalarProperty Name="dp" ColumnName="dp" />
+                <ScalarProperty Name="mos" ColumnName="mos" />
+                <ScalarProperty Name="cpt" ColumnName="cpt" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="at" ColumnName="at" />
+                <ScalarProperty Name="pay" ColumnName="pay" />
+                <ScalarProperty Name="adj" ColumnName="adj" />
+                <ScalarProperty Name="ins_ar" ColumnName="ins_ar" />
+                <ScalarProperty Name="pt_ar" ColumnName="pt_ar" />
+                <ScalarProperty Name="mcr" ColumnName="mcr" />
+                <ScalarProperty Name="allow" ColumnName="allow" />
+                <ScalarProperty Name="ded" ColumnName="ded" />
+                <ScalarProperty Name="mcr_percent" ColumnName="mcr_percent" />
+                <ScalarProperty Name="adju_yn" ColumnName="adju_yn" />
+                <ScalarProperty Name="ca" ColumnName="ca" />
+                <ScalarProperty Name="class_k" ColumnName="class_k" />
+                <ScalarProperty Name="ip_dp" ColumnName="ip_dp" />
+                <ScalarProperty Name="pp_dp" ColumnName="pp_dp" />
+                <ScalarProperty Name="facility" ColumnName="facility" />
+                <ScalarProperty Name="entity" ColumnName="entity" />
+                <ScalarProperty Name="tax_id" ColumnName="tax_id" />
+                <ScalarProperty Name="fac_county" ColumnName="fac_county" />
+                <ScalarProperty Name="fac_zip" ColumnName="fac_zip" />
+                <ScalarProperty Name="fac_state" ColumnName="fac_state" />
+                <ScalarProperty Name="acct_number" ColumnName="acct_number" />
+                <ScalarProperty Name="returned_date" ColumnName="returned_date" />
+                <ScalarProperty Name="custom_field_1" ColumnName="custom_field_1" />
+                <ScalarProperty Name="full_insur_yn_na" ColumnName="full_insur_yn_na" />
+                <ScalarProperty Name="filing_un" ColumnName="filing_un" />
+                <ScalarProperty Name="current_date" ColumnName="current_date" />
+                <ScalarProperty Name="filing_deadline_passed_yn" ColumnName="filing_deadline_passed_yn" />
+                <ScalarProperty Name="filing_deadline_begun_yn" ColumnName="filing_deadline_begun_yn" />
+                <ScalarProperty Name="tdi_yn" ColumnName="tdi_yn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eligible_yellow_blue">
+            <EntityTypeMapping TypeName="ArbitrationTrackFlowModel.eligible_yellow_blue">
+              <MappingFragment StoreEntitySet="eligible_yellow_blue">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ineligible" ColumnName="ineligible" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="req_id" ColumnName="req_id" />
+                <ScalarProperty Name="date_filed" ColumnName="date_filed" />
+                <ScalarProperty Name="filer" ColumnName="filer" />
+                <ScalarProperty Name="strikethrough" ColumnName="strikethrough" />
+                <ScalarProperty Name="eligible_green_id" ColumnName="eligible_green_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
